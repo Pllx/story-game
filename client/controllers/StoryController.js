@@ -33,6 +33,7 @@ function StoryController($scope, $http){
 
 	this.submitToDatabase = function(){
 		//get geolocation
+		this.storyRecord.username = this.username;
 		this.storyRecord.storySnippet = this.userInput;
 		if(window.navigator && window.navigator.geolocation){
 			var geolocation = window.navigator.geolocation;

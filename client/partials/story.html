@@ -11,13 +11,15 @@
 		<br><br>
 		<form ng-submit="storyControl.submit()">
 
+		<input type="text" ng-model="storyControl.username" placeholder="username" maxlength="40">
 			<input type="text" ng-model="storyControl.userInput" placeholder="continue the story!" maxlength="40">
 			<button type="submit">submit</button>
 			<div ng-show="storyControl.gotLocation">posted from: {{storyControl.postLocation}}</div>
 		</form>
+<!-- 		<textarea rows="4" cols="50" ng-model="storyControl.userInput" placeholder="continue the story!" maxlength="40"> -->
 	</div>
 
 	<div id="record-parent-container">
-		test
+		{{storyControl.storyRecord}}
 	</div>
 </div>
