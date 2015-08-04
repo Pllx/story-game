@@ -5,12 +5,18 @@
 
 <h2>myStory</h2>
 
-<div>{{storyControl.storyText}}</div>
+<div id="body-container">
+	<div id="story-parent-container">
+		<div class ="story-container">{{storyControl.storyText}}</div>
+		<br><br>
+		<form ng-submit="storyControl.submit()">
 
-<br><br>
+			<input type="text" ng-model="storyControl.userInput" placeholder="continue the story!" maxlength="40">
+			<button type="submit">submit</button>
+		</form>
+	</div>
 
-<form ng-submit="storyControl.submit()">
-
-	<input type="text" ng-model="storyControl.userInput" placeholder="continue the story!">
-	<button type="submit">submit</button>
-</form>
+	<div id="record-parent-container">
+		test
+	</div>
+</div>
