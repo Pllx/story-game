@@ -25,6 +25,7 @@ function StoryController($scope, $http){
 				this.postLocation = results[1].formatted_address;
 				this.storyRecord.postLocation = this.postLocation;
 				this.gotLocation = true;
+				$http.post('/storyrecords',this.storyRecord);
 				$scope.$digest();
 			}
 		}.bind(this));
@@ -43,7 +44,7 @@ function StoryController($scope, $http){
 			console.log("Geolocation is not supported");
 		}
 		console.log(this.storyRecord);
-		$http.post('/storyrecords',this.storyRecord);
+		// $http.post('/storyrecords',this.storyRecord);
 	}
 
 	this.submit = function(){
