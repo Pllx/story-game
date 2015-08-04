@@ -13,6 +13,7 @@
 
 			<input type="text" ng-model="storyControl.userInput" placeholder="continue the story!" maxlength="40">
 			<button type="submit">submit</button>
+			<div ng-show="storyControl.gotLocation">posted from: {{storyControl.postLocation}}</div>
 		</form>
 	</div>
 

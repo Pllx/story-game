@@ -7,6 +7,8 @@ function StoryController($scope, $http){
 	this.storyText = '';
 	this.userInput = '';
 	this.postLocation = '';
+	this.gotLocation = false;
+	var _this = this;
 	var geocoder = new google.maps.Geocoder();
 
 	function successFunction(position){
@@ -21,7 +23,11 @@ function StoryController($scope, $http){
 		geocoder.geocode({'latLng':latlng}, function(results, status){
 			if(status === google.maps.GeocoderStatus.OK){
 				this.postLocation = results[1].formatted_address;
-				console.log(this.postLocation);
+				_this.storyRecord.postLocation = this.postLocation;
+				_this.gotLocation = true;
+				_this.postLocation = this.postLocation;
+				console.log(_this.storyRecord.postLocation);
+				//_this.gotLocation = true;
 /*				this.storyRecord.postLocation = postLocation;
 				console.log(this.storyRecord.postLocation);*/
 			}
@@ -41,6 +47,7 @@ function StoryController($scope, $http){
 	}
 
 	this.submit = function(){
+		this.gotLocation = false;
 		this.storyText += ' ' + this.userInput;
 		this.submitToDatabase();
 		this.userInput = '';
