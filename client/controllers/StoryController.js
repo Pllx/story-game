@@ -14,24 +14,21 @@ function StoryController($scope, $http){
 	function successFunction(position){
 		var lat = position.coords.latitude;
 		var lng = position.coords.longitude;
-		console.log(lat + ',' + lng);
-		codeLatLng(lat, lng);
+		//console.log(lat + ',' + lng);
+		console.log(this);
+		this.codeLatLng(lat, lng);
 	}
 
-	function codeLatLng(lat,lng){
+	this.codeLatLng=function(lat,lng){
 		var latlng = new google.maps.LatLng(lat,lng);
 		geocoder.geocode({'latLng':latlng}, function(results, status){
 			if(status === google.maps.GeocoderStatus.OK){
 				this.postLocation = results[1].formatted_address;
-				_this.storyRecord.postLocation = this.postLocation;
-				_this.gotLocation = true;
-				_this.postLocation = this.postLocation;
-				console.log(_this.storyRecord.postLocation);
-				//_this.gotLocation = true;
-/*				this.storyRecord.postLocation = postLocation;
-				console.log(this.storyRecord.postLocation);*/
+				this.storyRecord.postLocation = this.postLocation;
+				this.gotLocation = true;
+				$scope.$digest();
 			}
-		});
+		}.bind(this));
 	}
 
 	this.submitToDatabase = function(){
@@ -39,7 +36,8 @@ function StoryController($scope, $http){
 		this.storyRecord.storySnippet = this.userInput;
 		if(window.navigator && window.navigator.geolocation){
 			var geolocation = window.navigator.geolocation;
-			geolocation.getCurrentPosition(successFunction);
+			console.log(this);
+			geolocation.getCurrentPosition(successFunction.bind(this));
 		}
 		else{
 			console.log("Geolocation is not supported");
