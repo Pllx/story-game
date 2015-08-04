@@ -15,7 +15,6 @@ function StoryController($scope, $http){
 		var lat = position.coords.latitude;
 		var lng = position.coords.longitude;
 		//console.log(lat + ',' + lng);
-		console.log(this);
 		this.codeLatLng(lat, lng);
 	}
 
@@ -43,6 +42,8 @@ function StoryController($scope, $http){
 		else{
 			console.log("Geolocation is not supported");
 		}
+		console.log(this.storyRecord);
+		$http.post('/storyrecords',this.storyRecord);
 	}
 
 	this.submit = function(){
@@ -50,6 +51,7 @@ function StoryController($scope, $http){
 		this.storyText += ' ' + this.userInput;
 		this.submitToDatabase();
 		this.userInput = '';
+
 
 	}
 }
