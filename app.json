@@ -1,0 +1,6 @@
+{
+  "name": "Story Game",
+  "description": "A Game of Story",
+  "repository": "https://github.com/Pllx/story-game",
+  "keywords": ["node", "express"]
+}
