@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/Pllx/story-game.git"
   },
+  "engines": {
+    "node": "0.12.2"
+  },
   "author": "Team Bike",
   "license": "ISC",
   "bugs": {

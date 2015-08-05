@@ -27,6 +27,7 @@ var StoryRecordSchema = new Schema({
 
 var StoryRecord = mongoose.model('StoryRecord', StoryRecordSchema);
 
+app.set('port',(process.env.PORT || 3000));
 app.use(bodyParser.json());
 
 app.get('/storyrecords', function(req,res,next){
@@ -46,7 +47,10 @@ app.post('/storyrecords', function(req,res,next){
 	res.sendStatus(200);
 });
 
+app.listen(app.get('port'), function(){
+	console.log("Node app is running at localhost:"+ app.get('port'));
+});
 
-app.listen(3000);
+//app.listen(3000);
 
 module.exports = app;
